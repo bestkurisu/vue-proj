@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>TodoList</title>
+    
+</head>
+<body>
+    <div id="app">
+        <header>
+            <div class="header">
+                <label for="title">TodoList</label>
+                <input type="text" id="title" placeholder="todoList" v-model="something" @keyup.13="input">
+            </div>
+        </header>
+        <div class="content">
+            <div class="doing">
+                <h2>
+                    正在进行数量：
+                    <span class="todoCount">{{ todoCount }}</span>
+                </h2>
+                <ol class="todo">
+                    <li v-for="(item, id) in doingList" :key="id" :id="item.id">
+                        <div class="todoItem">
+                            <input type="checkbox" class="check" @click="todoClick(item.id)" :checked="item.flag" />
+                            <span>{{ item.content }}</span>
+                            <button @click="todoClear(id, item.flag)" >-</button>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+            <div class="done">
+                <h2>
+                    已经完成数量：
+                    <span class="doneCount">{{ doneCount }}</span>
+                </h2>
+                <ol class="done">
+                    <li v-for="(item, id) in doneList" :key="id" :id="item.id">
+                        <div class="doneItem">
+                            <input type="checkbox" class="check" @click="doneClick(item.id)" :checked="item.flag" />
+                            <span>{{ item.content }}</span>
+                            <button @click="doneClear(id, item.flag)">-</button>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <span>{{ something }}</span>
+    </div>
+</body>
+<script src="index.js"></script>
+</html>
