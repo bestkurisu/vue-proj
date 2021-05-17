@@ -24,11 +24,11 @@
                     <span class="todoCount">{{ todoCount }}</span>
                 </h2>
                 <ol class="todo">
-                    <li v-for="(item, id) in doingList" :key="id" :id="item.id">
+                    <li v-for="(item, index) in doingList">
                         <div class="todoItem">
-                            <input type="checkbox" class="check" @click="todoClick(item.id)" :checked="item.flag" />
+                            <input type="checkbox" class="check" @click="todoClick(index)" :checked="item.flag" />
                             <span>{{ item.content }}</span>
-                            <button @click="todoClear(id, item.flag)" >-</button>
+                            <button @click="todoClear(index)" >-</button>
                         </div>
                     </li>
                 </ol>
@@ -39,11 +39,11 @@
                     <span class="doneCount">{{ doneCount }}</span>
                 </h2>
                 <ol class="done">
-                    <li v-for="(item, id) in doneList" :key="id" :id="item.id">
+                    <li v-for="(item, index) in doneList">
                         <div class="doneItem">
-                            <input type="checkbox" class="check" @click="doneClick(item.id)" :checked="item.flag" />
+                            <input type="checkbox" class="check" @click="doneClick(index)" :checked="item.flag" />
                             <span>{{ item.content }}</span>
-                            <button @click="doneClear(id, item.flag)">-</button>
+                            <button @click="doneClear(index)">-</button>
                         </div>
                     </li>
                 </ol>

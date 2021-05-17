@@ -16,21 +16,11 @@ const app = new Vue({
         },
         todoClick(id){
             console.log('todo'+id)
-            for(let item of this.doingList){
-                if(item.id == id && !item.flag){
-                    let index = this.doingList.indexOf(item)
-                    this.doneList.push({content:this.doingList.splice(index,1)[0].content,flag:!item.flag})
-                }
-            }
+            this.doneList.push({content:this.doingList.splice(id,1)[0].content, flag:true})
         },
         doneClick(id){
             console.log('done'+id)
-            for(let item of this.doneList){
-                if(item.id == id && item.flag){
-                    let index = this.doneList.indexOf(item)
-                    this.doingList.push({content:this.doneList.splice(index,1)[0].content,flag:!item.flag})
-                }
-            }
+            this.doingList.push({content:this.doneList.splice(id,1)[0].content, flag:false})
            
         },
         todoClear(id){
